@@ -4,11 +4,15 @@ project(Graph_Theory) # Project name
 # List of cpp files
 set(SRC
         main.cpp
+        src/Graph.cpp
+        src/MatrixValue.cpp
         )
 
 
 # List of h files
 set(HDR
+        src/Graph.h
+        src/MatrixValue.h
         )
 
 set(CMAKE_CXX_STANDARD 17) # Version of C++
