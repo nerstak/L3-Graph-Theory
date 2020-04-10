@@ -6,14 +6,14 @@ set(SRC
         main.cpp
         src/Graph.cpp
         src/MatrixValue.cpp
-        )
+        src/files.cpp)
 
 
 # List of h files
 set(HDR
         src/Graph.h
         src/MatrixValue.h
-        )
+        src/files.h)
 
 set(CMAKE_CXX_STANDARD 17) # Version of C++
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../) # Output in root folder
