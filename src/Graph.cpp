@@ -23,32 +23,44 @@ void Graph::initMatrix() {
     }
 }
 
-Graph::~Graph() {
-}
+Graph::~Graph() = default;
 
 void Graph::findEntryAndEnding() {
-    for(int from = 0; from < _numberVertices; from++) {
+    for(int state = 0; state < _numberVertices; state++) {
         // By default, a node is an exit and an entry point
-        bool entry{1}, exit{1};
-        _entryVertices.push_back(from);
-        _exitVertices.push_back(from);
-        int to = 0;
-        while(to < _numberVertices && (entry || exit)) {
-            // Checking ingoing edges
-            if (_matrix[to][from].getAdjacency() == true && entry) {
-                // We remove it from entry points
-                _entryVertices.pop_back();
-                entry = false;
-            }
+        _entryVertices.push_back(state);
+        _exitVertices.push_back(state);
 
-            // Checking outgoing edges
-            if (_matrix[from][to].getAdjacency() == true && exit) {
-                // We remove it from ending points
-                _exitVertices.pop_back();
-                exit = false;
-            }
+        // Cannot be entry if there is predecessor
+        if(!getPredecessors(state).empty()) {
+            _entryVertices.pop_back();
+        }
 
-            to++;
+        // Cannot be exit if there is successor
+        if(!getSuccessors(state).empty()) {
+            _exitVertices.pop_back();
         }
     }
+}
+
+vector<int> Graph::getPredecessors(int state) {
+    vector<int> predecessors;
+    for(int s = 0; s < _numberVertices; s++) {
+        if(_matrix[s][state].getAdjacency()) {
+            predecessors.push_back(s);
+        }
+    }
+
+    return predecessors;
+}
+
+vector<int> Graph::getSuccessors(int state) {
+    vector<int> successors;
+    for(int s = 0; s < _numberVertices; s++) {
+        if(_matrix[state][s].getAdjacency()) {
+            successors.push_back(s);
+        }
+    }
+
+    return successors;
 }

@@ -14,7 +14,7 @@ MatrixValue::MatrixValue(const MatrixValue &mv) {
     _weight = mv._weight;
 }
 
-int MatrixValue::getAdjacency() {
+bool MatrixValue::getAdjacency() {
     return _adjacency;
 }
 
@@ -24,12 +24,12 @@ int MatrixValue::getWeight() {
 
 void MatrixValue::setWeight(int weight) {
     _weight = weight;
-    _adjacency = 1;
+    _adjacency = true;
 }
 
 void MatrixValue::setAdjacency(bool adjacency) {
     _adjacency = adjacency;
-    if(_adjacency == 0) {
+    if(_adjacency == false) {
         _weight = 0;
     }
 }

@@ -24,7 +24,7 @@ public:
      * Get value of adjacency cell
      * @return Value of adjacency cell
      */
-    int getAdjacency();
+    bool getAdjacency();
 
     /**
      * Get value of weight

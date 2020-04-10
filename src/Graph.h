@@ -38,7 +38,7 @@ private:
     void findEntryAndEnding();
 
 public:
-    Graph(const string &nameFile);
+    explicit Graph(const string &nameFile);
 
     ~Graph();
 
@@ -47,6 +47,20 @@ public:
     const vector<int> &getExitVertices() const;
 
     const vector<vector<MatrixValue>> &getMatrix() const;
+
+    /**
+     * Get list of predecessors for given state
+     * @param state to analyse
+     * @return List of predecessors
+     */
+    vector<int> getPredecessors(int state);
+
+    /**
+     * Get list of successors for given state
+     * @param state to analyse
+     * @return List of successors
+     */
+    vector<int> getSuccessors(int state);
 
 
 };

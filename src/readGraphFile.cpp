@@ -1,6 +1,6 @@
 #include <fstream>
 #include <algorithm>
-#include "files.h"
+#include "readGraphFile.h"
 
 using namespace std;
 
@@ -12,6 +12,9 @@ Graph::Graph(const string &nameFile) {
         _name = nameFile;
 
         // TODO: Perform tests
+
+
+        findEntryAndEnding();
 
         inputStream.close();
     }
@@ -28,10 +31,6 @@ bool Graph::readGraphFromFile(ifstream &stream, const string &nameFile) {
     if(!readLines(stream, _matrix,_numberVertices,_numberEdges)) {
         // TODO: Free elements
     }
-
-    findEntryAndEnding();
-
-
 }
 
 
@@ -52,7 +51,7 @@ static bool readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int
         int vertexFrom, vertexTo, weight;
         separateTransition(line, vertexFrom, vertexTo, weight);
 
-        matrix[vertexFrom][vertexTo] = MatrixValue(1,weight);
+        matrix[vertexFrom][vertexTo] = MatrixValue(true,weight);
 
 
         if (!isInVector(listVertices, vertexFrom)) {
@@ -65,10 +64,7 @@ static bool readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int
     }
 
 
-    if(nbRealEdges == nbEdges && nbVertices == listVertices.size()) {
-        return true;
-    }
-    return false;
+    return nbRealEdges == nbEdges && nbVertices == listVertices.size();
 }
 
 static void separateTransition(string &transitionString, int &vertexFrom, int &vertexTo, int &weight) {
@@ -101,8 +97,5 @@ static int readDigit(string::iterator &it) {
 }
 
 static bool isInVector(vector<int> &l, int elt) {
-    if(find(l.begin(),l.end(),elt) != l.end()) {
-        return true;
-    }
-    return false;
+    return find(l.begin(), l.end(), elt) != l.end();
 }

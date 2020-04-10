@@ -1,5 +1,5 @@
-#ifndef GRAPH_THEORY_FILES_H
-#define GRAPH_THEORY_FILES_H
+#ifndef GRAPH_THEORY_READGRAPHFILE_H
+#define GRAPH_THEORY_READGRAPHFILE_H
 
 #include "Graph.h"
 
@@ -44,4 +44,4 @@ static int readDigit(string::iterator &it);
  */
 static bool isInVector(vector<int> &l, int elt);
 
-#endif //GRAPH_THEORY_FILES_H
+#endif //GRAPH_THEORY_READGRAPHFILE_H
