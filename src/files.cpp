@@ -23,11 +23,13 @@ bool Graph::readGraphFromFile(ifstream &stream, const string &nameFile) {
     _numberVertices = readUniqueNumber(stream);
     _numberEdges = readUniqueNumber(stream);
 
-    initMatrix(_numberVertices);
+    initMatrix();
 
     if(!readLines(stream, _matrix,_numberVertices,_numberEdges)) {
         // TODO: Free elements
     }
+
+    findEntryAndEnding();
 
 
 }
@@ -40,7 +42,7 @@ static int readUniqueNumber(ifstream &stream) {
     return stoi(line);
 }
 
-static int readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int nbVertices, int nbEdges) {
+static bool readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int nbVertices, int nbEdges) {
     string line;
     vector<int> listVertices;
     int nbRealEdges{0};

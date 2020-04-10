@@ -10,8 +10,8 @@ using namespace std;
 class Graph {
 private:
     string _name = "Graph";
-    vector<int> entryVertices; // List of all entry points
-    vector<int> exitVertices; // List of all exit points
+    vector<int> _entryVertices; // List of all entry points
+    vector<int> _exitVertices; // List of all exit points
     vector<vector<MatrixValue>> _matrix; // Adjacency & Weight Matrices
     int _numberVertices;
     int _numberEdges;
@@ -19,10 +19,23 @@ private:
     bool _cycle;
     bool _schedulable;
 
-
+    /**
+     * Read graph from file
+     * @param stream File stream (read)
+     * @param nameFile Name of the file
+     * @return Validity of creation of graph
+     */
     bool readGraphFromFile(ifstream &stream, const string &nameFile);
 
-    void initMatrix(int &size);
+    /**
+     * Initialise the matrix
+     */
+    void initMatrix();
+
+    /**
+     * Find entry & ending points
+     */
+    void findEntryAndEnding();
 
 public:
     Graph(const string &nameFile);

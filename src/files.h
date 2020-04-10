@@ -13,9 +13,12 @@ static int readUniqueNumber(ifstream &stream);
 /**
  * Read lines of transition
  * @param stream File stream (read)
- * @return
+ * @param matrix Matrix of graph to fill
+ * @param nbVertices Supposed number of vertices
+ * @param nbEdges Supposed number of edges
+ * @return True if values given and the ones read corresponds
  */
-static int readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int nbVertices, int nbEdges);
+static bool readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int nbVertices, int nbEdges);
 
 /**
  * Extract value from a line of transition
@@ -26,8 +29,19 @@ static int readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int 
  */
 static void separateTransition(string &transitionString, int &vertexFrom, int &vertexTo, int &weight);
 
+/**
+ * Read digit and preset for another read
+ * @param it Iterator of string to be read
+ * @return Value of digit
+ */
 static int readDigit(string::iterator &it);
 
+/**
+ * Check if value is in vector
+ * @param l List
+ * @param elt Element to verify
+ * @return Boolean of presence
+ */
 static bool isInVector(vector<int> &l, int elt);
 
 #endif //GRAPH_THEORY_FILES_H
