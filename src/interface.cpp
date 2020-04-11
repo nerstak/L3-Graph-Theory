@@ -40,6 +40,7 @@ static void processFile() {
     myFileName = "Int1-9-graph" + to_string(askNumberFile()) + ".txt";
     Graph myGraph = Graph("graphs/", myFileName);
 
+    myGraph.checkLoop();
 
 
 }

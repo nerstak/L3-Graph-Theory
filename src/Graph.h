@@ -62,6 +62,11 @@ public:
      */
     vector<int> getSuccessors(int state);
 
+    void checkLoop();
+
+    void disconnectEntries();
+    bool popCycle();
+
 
 };
 
