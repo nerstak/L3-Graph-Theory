@@ -1,15 +1,17 @@
 #include <fstream>
 #include <algorithm>
+#include <iostream>
 #include "readGraphFile.h"
 
 using namespace std;
 
-Graph::Graph(const string &nameFile) {
-    ifstream inputStream(nameFile);
+Graph::Graph(const string &path, const string &nameFile) {
+    ifstream inputStream(path + nameFile);
 
     if(inputStream) {
-        readGraphFromFile(inputStream,nameFile);
+        createLogFile(nameFile);
         _name = nameFile;
+        readGraphFromFile(inputStream);
 
         // TODO: Perform tests
 
@@ -20,15 +22,17 @@ Graph::Graph(const string &nameFile) {
     }
 }
 
-bool Graph::readGraphFromFile(ifstream &stream, const string &nameFile) {
+bool Graph::readGraphFromFile(ifstream &stream) {
     string line;;
 
     _numberVertices = readUniqueNumber(stream);
     _numberEdges = readUniqueNumber(stream);
 
+    displayNumbers(_name, _numberVertices, _numberEdges);
+
     initMatrix();
 
-    if(!readLines(stream, _matrix,_numberVertices,_numberEdges)) {
+    if(!readLines(stream, _name, _matrix, _numberVertices, _numberEdges)) {
         // TODO: Free elements
     }
 }
@@ -41,11 +45,13 @@ static int readUniqueNumber(ifstream &stream) {
     return stoi(line);
 }
 
-static bool readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int nbVertices, int nbEdges) {
+static bool
+readLines(ifstream &stream, string const &nameFile, vector<vector<MatrixValue>> &matrix, int nbVertices, int nbEdges) {
     string line;
     vector<int> listVertices;
     int nbRealEdges{0};
 
+    // Reading each remaining line
     while (getline(stream, line)) {
         nbRealEdges++;
         int vertexFrom, vertexTo, weight;
@@ -53,14 +59,17 @@ static bool readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int
 
         matrix[vertexFrom][vertexTo] = MatrixValue(true,weight);
 
-
+        // Verify if node is recorded
         if (!isInVector(listVertices, vertexFrom)) {
             listVertices.push_back(vertexFrom);
         }
-
         if (!isInVector(listVertices, vertexTo)) {
             listVertices.push_back(vertexTo);
         }
+
+        // Log
+        string display = to_string(vertexFrom) + " -> " + to_string(vertexTo) + " = " + to_string(weight) + "\n";
+        writeLogFile(nameFile, display);
     }
 
 
@@ -98,4 +107,12 @@ static int readDigit(string::iterator &it) {
 
 static bool isInVector(vector<int> &l, int elt) {
     return find(l.begin(), l.end(), elt) != l.end();
+}
+
+static void displayNumbers(const string &nameFile, int nbVertices, int nbEdges) {
+    string display = "* Reading graph from file " + nameFile + "\n";
+
+    display += to_string(nbVertices) + " vertices\n" + to_string(nbEdges) + " edges\n";
+
+    writeLogFile(nameFile,display);
 }

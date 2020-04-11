@@ -25,7 +25,7 @@ private:
      * @param nameFile Name of the file
      * @return Validity of creation of graph
      */
-    bool readGraphFromFile(ifstream &stream, const string &nameFile);
+    bool readGraphFromFile(ifstream &stream);
 
     /**
      * Initialise the matrix
@@ -38,7 +38,7 @@ private:
     void findEntryAndEnding();
 
 public:
-    explicit Graph(const string &nameFile);
+    explicit Graph(const string &path, const string &nameFile);
 
     ~Graph();
 

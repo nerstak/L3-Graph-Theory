@@ -2,6 +2,7 @@
 #define GRAPH_THEORY_READGRAPHFILE_H
 
 #include "Graph.h"
+#include "logs.h"
 
 /**
  * Read an unique number on a line
@@ -18,7 +19,8 @@ static int readUniqueNumber(ifstream &stream);
  * @param nbEdges Supposed number of edges
  * @return True if values given and the ones read corresponds
  */
-static bool readLines(ifstream &stream, vector<vector<MatrixValue>> &matrix, int nbVertices, int nbEdges);
+static bool
+readLines(ifstream &stream, string const &nameFile, vector<vector<MatrixValue>> &matrix, int nbVertices, int nbEdges);
 
 /**
  * Extract value from a line of transition
@@ -43,5 +45,7 @@ static int readDigit(string::iterator &it);
  * @return Boolean of presence
  */
 static bool isInVector(vector<int> &l, int elt);
+
+static void displayNumbers(const string &nameFile, int nbVertices, int nbEdges);
 
 #endif //GRAPH_THEORY_READGRAPHFILE_H

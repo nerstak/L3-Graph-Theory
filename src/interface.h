@@ -2,6 +2,7 @@
 #define GRAPH_THEORY_INTERFACE_H
 
 #include "Graph.h"
+#include "logs.h"
 
 /**
  * Function handling menu

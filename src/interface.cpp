@@ -36,10 +36,12 @@ static int interaction() {
 
 static void processFile() {
     separation();
-    string myFile;
-    myFile = "graphs/" + to_string(askNumberFile()) + ".txt";
-    Graph myGraph = Graph(myFile);
-    myGraph.getMatrix();
+    string myFileName;
+    myFileName = "Int1-9-graph" + to_string(askNumberFile()) + ".txt";
+    Graph myGraph = Graph("graphs/", myFileName);
+
+
+
 }
 
 

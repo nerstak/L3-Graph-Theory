@@ -8,6 +8,7 @@ set(SRC
         src/MatrixValue.cpp
         src/readGraphFile.cpp
         src/interface.cpp
+        src/logs.cpp
         )
 
 
@@ -17,6 +18,7 @@ set(HDR
         src/MatrixValue.h
         src/readGraphFile.h
         src/interface.h
+        src/logs.h
         )
 
 set(CMAKE_CXX_STANDARD 17) # Version of C++
