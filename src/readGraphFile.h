@@ -46,6 +46,12 @@ static int readDigit(string::iterator &it);
  */
 static bool isInVector(vector<int> &l, int elt);
 
+/**
+ * Display number of vertices and edges in log
+ * @param nameFile Name of the log file
+ * @param nbVertices Number of vertices
+ * @param nbEdges Number of edges
+ */
 static void displayNumbers(const string &nameFile, int nbVertices, int nbEdges);
 
 #endif //GRAPH_THEORY_READGRAPHFILE_H

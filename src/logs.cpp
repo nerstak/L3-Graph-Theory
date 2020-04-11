@@ -12,7 +12,10 @@ void createLogFile(string nameFile) {
 }
 
 void writeLogFile(string nameFile, const string &value) {
+    // Display on screen
     cout << value;
+
+    // Write on log
     ofstream myFile("logs/" + nameFile, ios::app);
     if(myFile.is_open()) {
         myFile << value;
