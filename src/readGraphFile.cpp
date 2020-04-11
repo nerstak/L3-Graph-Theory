@@ -83,13 +83,13 @@ static void separateTransition(string &transitionString, int &vertexFrom, int &v
 static int readDigit(string::iterator &it) {
     string tmp;
     // Reading digit
-    while (isdigit(*it)) {
+    while (isdigit(*it) or *it == '-') {
         tmp += *it;
         it++;
     }
 
     // Moving to the next digit
-    while(!isdigit(*it)) {
+    while(!isdigit(*it) && *it != '-') {
         it++;
     }
 
