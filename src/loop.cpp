@@ -1,62 +1,58 @@
-#include <algorithm>
 #include <iostream>
 #include "loop.h"
 
 using namespace std;
 
 void Graph::checkLoop() {
+    //make a copy so it doesnt remove actual states
     Graph newGraph(*this);
 
+    cout << "~~ Cycle Detection by removing states ~~" << endl;
+
+    //Calls recursive function
     _cycle = newGraph.popCycle();
 
+    cout << endl;
     if (_cycle) {
         cout << "The graph contains a cycle.";
     } else {
         cout << "The graph does not contains a cycle.";
+
     }
 }
-
-void Graph::disconnectEntries() {
-    vector<int> successors, newEntries, singleSuccessors;
-
-    for (int i : _entryVertices) {
-        singleSuccessors = getSuccessors(i);
-        for (int j: singleSuccessors) {
-            //if not already added to successors (union of all successors and currVertex successors)
-            if (find(singleSuccessors.begin(), singleSuccessors.end(), i) == singleSuccessors.end()) {
-                successors.push_back(j);
-            }
-        }
-    }
-
-    for (int i: _entryVertices) {
-        for (int j = 0; j < _numberVertices; j++) {
-            _matrix[i][j].setAdjacency(false);
-        }
-    }
-
-    _entryVertices.clear();
-
-    for (int i: successors) {
-        if (getPredecessors(i).empty()) {
-            _entryVertices.push_back(i);
-        }
-    }
-}
-
 
 bool Graph::popCycle(int step) {
-    cout << "Step " << step << ": ";
-    for (int i:_entryVertices) {
-        cout << to_string(i) + " ";
+    vector<int> remaining;
+
+    //remaining vertices are those that are not entries (including disconnected ones)
+    for (int i = 0; i < _numberVertices; i++) {
+        if (!getPredecessors(i).empty()) {
+            remaining.push_back(i);
+        }
     }
+
+    cout << endl << "Step " << step << ": " << endl;
+
+    cout << "  Elimination of entry points: ";
+    cout << verticesToString(_entryVertices);
     cout << endl;
 
+    cout << "  Remaining Vertices: ";
+    cout << verticesToString(remaining);
+    cout << endl;
+
+    //Disconnect our entries and find new entries
+    disconnectEntries();
+
+    cout << "  New entry points: ";
+    cout << verticesToString(_entryVertices);
+    cout << endl;
+
+    //If there are new entries we need another step to disconnect them
     if (!_entryVertices.empty()) {
-        disconnectEntries();
         return popCycle(++step);
     } else {
-        findEntryAndEnding();
-        return _entryVertices.size() != _numberVertices;
+        //If there are no remaining vertices, there is no cycle
+        return !remaining.empty();
     }
 }
