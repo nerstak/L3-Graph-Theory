@@ -62,6 +62,30 @@ public:
      */
     vector<int> getSuccessors(int state);
 
+    /**
+     * Turns a list of states (ints) into a simple string
+     * @param states to turn into string
+     * @return list separated by spaces
+     */
+    string verticesToString(vector<int> states);
+
+    /**
+     * Runs loop detection and changes the cycle value of graph
+     */
+    void checkLoop();
+
+    /**
+     * Disconnects all entry states and sets their successors as entries
+     */
+    void disconnectEntries();
+
+    /**
+     * Recursive function that keeps removing steps to see if the graph is a cycle
+     * @param step Current step of recursion
+     * @return True if loop (all states disconnected), False otherwise
+     */
+    bool popCycle(int step = 0);
+
 
 };
 
