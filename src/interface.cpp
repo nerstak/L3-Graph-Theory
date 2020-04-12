@@ -6,10 +6,10 @@ using namespace std;
 void menu() {
     bool loop = true;
     int choice{0};
-    while(loop) {
+    while (loop) {
         choice = interaction();
 
-        if(choice != 2) {
+        if (choice != 2) {
             processFile();
         } else {
             loop = false;
@@ -42,6 +42,9 @@ static void processFile() {
 
     myGraph.checkLoop();
 
+    if (!myGraph.getCycle()) {
+        myGraph.findRank();
+    }
 
 }
 

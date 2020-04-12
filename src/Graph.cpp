@@ -13,6 +13,10 @@ const vector<vector<MatrixValue>> &Graph::getMatrix() const {
     return _matrix;
 }
 
+const bool &Graph::getCycle() const {
+    return _cycle;
+}
+
 void Graph::initMatrix() {
     for (int i = 0; i < _numberVertices; i++) {
         vector<MatrixValue> tmp;

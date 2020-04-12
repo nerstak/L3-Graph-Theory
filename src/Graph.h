@@ -19,6 +19,8 @@ private:
     bool _cycle;
     bool _schedulable;
 
+    vector<vector<int>> _rank; // Vertices at each rank
+
     /**
      * Read graph from file
      * @param stream File stream (read)
@@ -47,6 +49,8 @@ public:
     const vector<int> &getExitVertices() const;
 
     const vector<vector<MatrixValue>> &getMatrix() const;
+
+    const bool &getCycle() const;
 
     /**
      * Get list of predecessors for given state
@@ -86,6 +90,9 @@ public:
      */
     bool popCycle(int step = 0);
 
+    void findRank();
+
+    void popRank();
 
 };
 
