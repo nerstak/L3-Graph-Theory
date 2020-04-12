@@ -62,10 +62,14 @@ public:
      */
     vector<int> getSuccessors(int state);
 
+    /**
+     * Runs loop detection and changes the cycle value of graph
+     */
     void checkLoop();
 
     void disconnectEntries();
-    bool popCycle();
+
+    bool popCycle(int step = 0);
 
 
 };

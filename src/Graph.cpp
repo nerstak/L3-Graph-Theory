@@ -26,6 +26,8 @@ void Graph::initMatrix() {
 Graph::~Graph() = default;
 
 void Graph::findEntryAndEnding() {
+    _entryVertices.clear();
+    _exitVertices.clear();
     for(int state = 0; state < _numberVertices; state++) {
         // By default, a node is an exit and an entry point
         _entryVertices.push_back(state);
