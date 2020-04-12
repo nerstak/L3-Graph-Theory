@@ -10,6 +10,7 @@ set(SRC
         src/interface.cpp
         src/logs.cpp
         src/loop.cpp
+        src/rank.cpp
         )
 
 
@@ -20,7 +21,7 @@ set(HDR
         src/readGraphFile.h
         src/interface.h
         src/logs.h
-        src/loop.h
+        src/rank.cpp
         )
 
 set(CMAKE_CXX_STANDARD 17) # Version of C++

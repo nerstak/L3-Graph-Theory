@@ -17,7 +17,6 @@ void Graph::checkLoop() {
         cout << "The graph contains a cycle.";
     } else {
         cout << "The graph does not contains a cycle.";
-
     }
 }
 
