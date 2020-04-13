@@ -44,6 +44,9 @@ static void processFile() {
 
     if (!myGraph.getCycle()) {
         myGraph.findRank();
+
+        //@julien @julien, un gros if( its schedulable) ici stp
+        cout << endl << endl << " ~~Earliest Time~~ "  << myGraph.computeEarliest();
     }
 
 }

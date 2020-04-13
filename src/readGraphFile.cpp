@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <iostream>
 #include "readGraphFile.h"
+#include "Graph.h"
+
 
 using namespace std;
 
@@ -32,14 +34,12 @@ bool Graph::readGraphFromFile(ifstream &stream) {
 
     initMatrix();
 
-    initCalendar
+    initCalendars();
 
     if(!readLines(stream, _name, _matrix, _numberVertices, _numberEdges)) {
         // TODO: Free elements
     }
 }
-
-
 
 static int readUniqueNumber(ifstream &stream) {
     string line;

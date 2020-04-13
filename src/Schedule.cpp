@@ -13,10 +13,21 @@ int Schedule::getPrevState() {
     return _prevState;
 }
 
-void Schedule::setPrevState(int prevState) {
-    Schedule::_prevState = prevState;
+void Schedule::setPrev(int prevState, int time) {
+    _prevState = prevState;
+    _time=time;
 }
 
-void Schedule::setTime(int time) {
-    Schedule::_time = time;
+string Schedule::toString() {
+    string outStr, prev="None";
+
+    outStr += "   Time: " + to_string(_time) + "\n";
+
+    if(_prevState!=-1)
+    {
+        prev=to_string(_prevState);
+    }
+    outStr += "   Previous: " + prev + "\n";
+
+    return outStr;
 }

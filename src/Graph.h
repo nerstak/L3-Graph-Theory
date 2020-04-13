@@ -38,7 +38,7 @@ private:
      */
     void initMatrix();
 
-    void initCalendar(Calendar calendar);
+    void initCalendars();
 
     /**
      * Find entry & ending points
@@ -57,6 +57,8 @@ public:
     const vector<vector<MatrixValue>> &getMatrix() const;
 
     const bool &getCycle() const;
+
+    const vector<vector<int>> &getRank() const;
 
     /**
      * Get list of predecessors for given state
@@ -106,9 +108,11 @@ public:
      */
     void popRank();
 
-    void computeEarliest();
+    string computeEarliest();
 
     Schedule earliestPredecessor(int state);
+
+
 
 };
 

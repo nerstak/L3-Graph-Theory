@@ -17,6 +17,10 @@ const bool &Graph::getCycle() const {
     return _cycle;
 }
 
+const vector<vector<int>> &Graph::getRank() const {
+    return _rank;
+}
+
 void Graph::initMatrix() {
     for (int i = 0; i < _numberVertices; i++) {
         vector<MatrixValue> tmp;
@@ -28,9 +32,10 @@ void Graph::initMatrix() {
     }
 }
 
-void Graph::initCalendar(Calendar calendar) {
+void Graph::initCalendars() {
     for(int i = 0; i < _numberVertices; i++) {
-        calendar.push_back(Schedule(-1,0));
+        _earliestCalendar.push_back(Schedule(-1,0));
+        _latestCalendar.push_back(Schedule(-1,0));
     }
 }
 
@@ -123,15 +128,29 @@ string Graph::verticesToString(vector<int> states) {
     return entries;
 }
 
-void Graph::computeEarliest() {
+string Graph::computeEarliest() {
+    string outStr= "\n",route ;
+    int curr;
+
     for(vector<int> rank: _rank)
     {
         for(int state:rank)
         {
             _earliestCalendar[state]= earliestPredecessor(state);
+            outStr+= "\nState: " + to_string(state) + "\n";
+            outStr+= _earliestCalendar[state].toString();
         }
     }
 
+    curr=_exitVertices[0];
+    outStr+= "\n\nEarliest Time is " + to_string(_earliestCalendar[curr].getTime()) + ", going through:\n ";
+
+    do{
+        route= ">" + to_string(curr) + route;
+        curr= _earliestCalendar[curr].getPrevState();
+    } while (curr!=-1);
+
+    return outStr + route;
 }
 
 Schedule Graph::earliestPredecessor(int state){
@@ -149,15 +168,14 @@ Schedule Graph::earliestPredecessor(int state){
             {
                 if(predTime < minPredecessor.getTime())
                 {
-                    minPredecessor.setPrevState(pred);
-                    minPredecessor.setTime(predTime);
+                    minPredecessor.setPrev(pred,predTime);
                 }
             } else {
-                minPredecessor.setPrevState(pred);
-                minPredecessor.setTime(predTime);
+                minPredecessor.setPrev(pred,predTime);
             }
         }
     }
 
     return minPredecessor;
 }
+

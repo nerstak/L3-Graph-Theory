@@ -2,6 +2,7 @@
 #define GRAPH_THEORY_SCHEDULE_H
 
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -19,9 +20,10 @@ public:
 
     int getPrevState();
 
-    void setPrevState(int prevState);
+    string toString();
 
-    void setTime(int time);
+    void setPrev(int prevState, int time);
+
 
 };
 

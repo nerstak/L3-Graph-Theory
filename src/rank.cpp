@@ -6,7 +6,11 @@ using namespace std;
 void Graph::findRank() {
     _rank.clear();
 
-    popRank();
+    Graph newGraph(*this);
+
+    newGraph.popRank();
+
+    _rank=newGraph.getRank();
 
     int size = _rank.size();
 
