@@ -32,6 +32,8 @@ bool Graph::readGraphFromFile(ifstream &stream) {
 
     initMatrix();
 
+    initCalendar
+
     if(!readLines(stream, _name, _matrix, _numberVertices, _numberEdges)) {
         // TODO: Free elements
     }

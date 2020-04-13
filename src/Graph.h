@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "MatrixValue.h"
+#include "Schedule.h"
 
 using namespace std;
 
@@ -21,6 +22,9 @@ private:
 
     vector<vector<int>> _rank; // Vertices at each rank
 
+    Calendar _earliestCalendar;
+    Calendar _latestCalendar;
+
     /**
      * Read graph from file
      * @param stream File stream (read)
@@ -33,6 +37,8 @@ private:
      * Initialise the matrix
      */
     void initMatrix();
+
+    void initCalendar(Calendar calendar);
 
     /**
      * Find entry & ending points
@@ -99,6 +105,10 @@ public:
      * Recursive function to create the Rank table
      */
     void popRank();
+
+    void computeEarliest();
+
+    Schedule earliestPredecessor(int state);
 
 };
 

@@ -28,6 +28,13 @@ void Graph::initMatrix() {
     }
 }
 
+void Graph::initCalendar(Calendar calendar) {
+    for(int i = 0; i < _numberVertices; i++) {
+        calendar.push_back(Schedule(-1,0));
+    }
+}
+
+
 Graph::~Graph() = default;
 
 void Graph::findEntryAndEnding() {
@@ -114,4 +121,43 @@ string Graph::verticesToString(vector<int> states) {
         }
     }
     return entries;
+}
+
+void Graph::computeEarliest() {
+    for(vector<int> rank: _rank)
+    {
+        for(int state:rank)
+        {
+            _earliestCalendar[state]= earliestPredecessor(state);
+        }
+    }
+
+}
+
+Schedule Graph::earliestPredecessor(int state){
+    int predTime;
+    vector<int> predecessors = getPredecessors(state);
+    Schedule minPredecessor= Schedule(-1,0);
+
+    if(!predecessors.empty())
+    {
+        for(int pred: predecessors)
+        {
+            predTime= _earliestCalendar[pred].getTime()+ _matrix[pred][state].getWeight();
+
+            if(minPredecessor.getPrevState()!=-1)
+            {
+                if(predTime < minPredecessor.getTime())
+                {
+                    minPredecessor.setPrevState(pred);
+                    minPredecessor.setTime(predTime);
+                }
+            } else {
+                minPredecessor.setPrevState(pred);
+                minPredecessor.setTime(predTime);
+            }
+        }
+    }
+
+    return minPredecessor;
 }
