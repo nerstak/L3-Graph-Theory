@@ -11,6 +11,8 @@ set(SRC
         src/logs.cpp
         src/loop.cpp
         src/rank.cpp
+        src/Schedule.cpp
+        src/scheduling.cpp
         )
 
 
@@ -21,7 +23,8 @@ set(HDR
         src/readGraphFile.h
         src/interface.h
         src/logs.h
-        src/rank.cpp
+        src/rank.h
+        src/Schedule.h
         )
 
 set(CMAKE_CXX_STANDARD 17) # Version of C++

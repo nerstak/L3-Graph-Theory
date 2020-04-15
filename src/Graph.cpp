@@ -17,6 +17,10 @@ const bool &Graph::getCycle() const {
     return _cycle;
 }
 
+const vector<vector<int>> &Graph::getRank() const {
+    return _rank;
+}
+
 void Graph::initMatrix() {
     for (int i = 0; i < _numberVertices; i++) {
         vector<MatrixValue> tmp;
@@ -27,6 +31,14 @@ void Graph::initMatrix() {
         _matrix.push_back(tmp);
     }
 }
+
+void Graph::initCalendars() {
+    for (int i = 0; i < _numberVertices; i++) {
+        _earliestCalendar.push_back(Schedule(-1, 0));
+        _latestCalendar.push_back(Schedule(-1, 0));
+    }
+}
+
 
 Graph::~Graph() = default;
 

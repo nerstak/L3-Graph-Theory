@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "MatrixValue.h"
+#include "Schedule.h"
 
 using namespace std;
 
@@ -21,6 +22,9 @@ private:
 
     vector<vector<int>> _rank; // Vertices at each rank
 
+    Calendar _earliestCalendar;
+    Calendar _latestCalendar;
+
     /**
      * Read graph from file
      * @param stream File stream (read)
@@ -33,6 +37,8 @@ private:
      * Initialise the matrix
      */
     void initMatrix();
+
+    void initCalendars();
 
     /**
      * Find entry & ending points
@@ -51,6 +57,8 @@ public:
     const vector<vector<MatrixValue>> &getMatrix() const;
 
     const bool &getCycle() const;
+
+    const vector<vector<int>> &getRank() const;
 
     /**
      * Get list of predecessors for given state
@@ -100,6 +108,37 @@ public:
      */
     void popRank();
 
+    /**
+     * Creates the earliest times calendar
+     * @return string describing latest time and predecessor of each state as well as critical path
+     */
+    string computeEarliest();
+
+    /**
+     * Creates the latest times calendar
+     * @return string describing latest time and successor of each state as well as critical path
+     */
+    string computeLatest();
+
+    /**
+     * Finds the time and predecessor/successor of a state in a calendar
+     * @param state State to find scheduling info on
+     * @param timeType EARLIEST will calculate earliest time, LATEST will calculate latest time
+     * @return scheduling info for state
+     */
+    Schedule minmaxLink(int state, int timeType);
+
+    /**
+     * Creates a string with the time margin at each state
+     * @return latest time - earliest time for each state
+     */
+    string margins();
+
+    /**
+     * Displays duration of task or "-" if it is a exit state
+     * @return String with info
+     */
+    string taskDuration(int state);
 };
 
 
