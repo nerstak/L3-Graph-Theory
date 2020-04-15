@@ -1,8 +1,8 @@
 #include "Schedule.h"
 
 Schedule::Schedule(int linkState, int time) {
-    _linkState=linkState;
-    _time=time;
+    _linkState = linkState;
+    _time = time;
 }
 
 int Schedule::getTime() {
@@ -15,24 +15,22 @@ int Schedule::getLinkState() {
 
 void Schedule::setLink(int linkState, int time) {
     _linkState = linkState;
-    _time=time;
+    _time = time;
 }
 
 string Schedule::toString(int timeType) {
-    string outStr, linkType, link="None";
+    string outStr, linkType, link = "None";
 
     outStr += "   Time: " + to_string(_time) + "\n";
 
-    if(_linkState!=-1)
-    {
-        link=to_string(_linkState);
+    if (_linkState != -1) {
+        link = to_string(_linkState);
     }
 
-    if(timeType==EARLIEST)
-    {
-        linkType= "Predecessor";
+    if (timeType == EARLIEST) {
+        linkType = "Predecessor";
     } else {
-        linkType= "Successor";
+        linkType = "Successor";
     }
 
     outStr += "   " + linkType + ": " + link + "\n";

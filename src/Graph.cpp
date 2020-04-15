@@ -33,9 +33,9 @@ void Graph::initMatrix() {
 }
 
 void Graph::initCalendars() {
-    for(int i = 0; i < _numberVertices; i++) {
-        _earliestCalendar.push_back(Schedule(-1,0));
-        _latestCalendar.push_back(Schedule(-1,0));
+    for (int i = 0; i < _numberVertices; i++) {
+        _earliestCalendar.push_back(Schedule(-1, 0));
+        _latestCalendar.push_back(Schedule(-1, 0));
     }
 }
 
@@ -126,120 +126,4 @@ string Graph::verticesToString(vector<int> states) {
         }
     }
     return entries;
-}
-
-string Graph::computeEarliest() {
-    string outStr, route ;
-    int curr;
-
-    for(const vector<int> &rank: _rank)
-    {
-        for(int state:rank)
-        {
-            _earliestCalendar[state]= minmaxLink(state, EARLIEST);
-            outStr+= "\nState: " + to_string(state) + "\n";
-            outStr+= _earliestCalendar[state].toString(EARLIEST);
-        }
-    }
-
-    curr=_exitVertices[0];
-    outStr+= "\n\nEarliest Time is " + to_string(_earliestCalendar[curr].getTime()) + ", going through:\n ";
-
-    do{
-        route= ">" + to_string(curr) + route;
-        curr= _earliestCalendar[curr].getLinkState();
-    } while (curr!=-1);
-
-    return outStr + route;
-}
-
-string Graph::computeLatest() {
-    string outStr;
-    int curr, state;
-
-    for (int i = _rank.size() - 1; i >= 0 ; i--) {
-        for (int j = _rank[i].size() - 1 ; j >= 0 ; j--) {
-            state= _rank[i][j];
-
-            _latestCalendar[state]= minmaxLink(state, LATEST);
-            outStr= _latestCalendar[state].toString(LATEST) + outStr;
-            outStr= "\nState: " + to_string(state) + "\n" + outStr;
-        }
-    }
-
-    outStr= "\n" + outStr;
-
-    //TODO check if its normal that latest route is same as earliest route
-    curr=_entryVertices[0];
-    outStr+= "\n\nThe Latest Time route is:\n ";
-
-    do{
-        outStr+= ">" + to_string(curr);
-        curr=_latestCalendar[curr].getLinkState();
-    } while(curr!=-1);
-
-    return outStr;
-}
-
-Schedule Graph::minmaxLink(int state, int timeType){
-    int linkTime, pathWeight, startTime;
-    vector<int> links;
-    Calendar calendarType;
-
-    if( timeType == EARLIEST )
-    {
-        links=getPredecessors(state);
-        calendarType = _earliestCalendar;
-        startTime=0;
-    } else {
-        links=getSuccessors(state);
-        calendarType = _latestCalendar;
-        startTime=_earliestCalendar[_exitVertices[0]].getTime();
-    }
-
-    Schedule newLink= Schedule(-1,startTime);
-
-    if(!links.empty())
-    {
-        for(int linkState: links)
-        {
-            if(timeType==EARLIEST)
-            {
-                pathWeight= _matrix[linkState][state].getWeight();
-            } else {
-                pathWeight= -_matrix[state][linkState].getWeight();
-            }
-
-            linkTime= calendarType[linkState].getTime() + pathWeight;
-
-            if(newLink.getLinkState()==-1)
-            {
-                //set default value
-                newLink.setLink(linkState, linkTime);
-            } else {
-                //update minimum value
-                if((linkTime* timeType) > (newLink.getTime() * timeType))
-                {
-                    newLink.setLink(linkState, linkTime);
-                }
-            }
-        }
-    }
-
-    return newLink;
-}
-
-string Graph::margins() {
-    string outStr="\n";
-    for(const vector<int> &rank: _rank)
-    {
-        for(int state:rank)
-        {
-            outStr+= "\nState: " + to_string(state) + "\n  ";
-            outStr+= "Margin:  " + to_string(_latestCalendar[state].getTime()) +
-                    " - " + to_string(_earliestCalendar[state].getTime()) + " = " +
-                    to_string(_latestCalendar[state].getTime() - _earliestCalendar[state].getTime() );
-        }
-    }
-    return outStr;
 }

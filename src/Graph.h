@@ -108,14 +108,37 @@ public:
      */
     void popRank();
 
+    /**
+     * Creates the earliest times calendar
+     * @return string describing latest time and predecessor of each state as well as critical path
+     */
     string computeEarliest();
 
+    /**
+     * Creates the latest times calendar
+     * @return string describing latest time and successor of each state as well as critical path
+     */
     string computeLatest();
 
+    /**
+     * Finds the time and predecessor/successor of a state in a calendar
+     * @param state State to find scheduling info on
+     * @param timeType EARLIEST will calculate earliest time, LATEST will calculate latest time
+     * @return scheduling info for state
+     */
     Schedule minmaxLink(int state, int timeType);
 
+    /**
+     * Creates a string with the time margin at each state
+     * @return latest time - earliest time for each state
+     */
     string margins();
 
+    /**
+     * Displays duration of task or "-" if it is a exit state
+     * @return String with info
+     */
+    string taskDuration(int state);
 };
 
 

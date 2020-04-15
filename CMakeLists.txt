@@ -12,6 +12,7 @@ set(SRC
         src/loop.cpp
         src/rank.cpp
         src/Schedule.cpp
+        src/scheduling.cpp
         )
 
 
