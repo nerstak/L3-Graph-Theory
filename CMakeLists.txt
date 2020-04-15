@@ -23,7 +23,6 @@ set(HDR
         src/readGraphFile.h
         src/interface.h
         src/logs.h
-        src/rank.h
         src/Schedule.h
         )
 

@@ -46,9 +46,9 @@ static void processFile() {
         myGraph.findRank();
 
         //@julien @julien, un gros if( its schedulable) ici stp
-        cout << endl << endl << " ~~Earliest Time~~ " << myGraph.computeEarliest();
-        cout << endl << endl << " ~~Latest Time~~ " << myGraph.computeLatest();
-        cout << endl << endl << " ~~Margins~~ " << myGraph.margins();
+        writeLogFile(myFileName,"\n\n ~~Earliest Time~~ " + myGraph.computeEarliest());
+        writeLogFile(myFileName, "\n\n ~~Latest Time~~ " + myGraph.computeLatest());
+        writeLogFile(myFileName,"\n\n ~~Margins~~ " + myGraph.margins());
     }
 
 }

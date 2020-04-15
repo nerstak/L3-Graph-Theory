@@ -15,7 +15,7 @@ string Graph::computeEarliest() {
         }
     }
 
-    //Earliest duration is the time it takes to reach the exit vertice (there is only one exit)
+    //Earliest duration is the time it takes to reach the exit vertex (there is only one exit)
     curr = _exitVertices[0];
     outStr += "\n\nEarliest Duration is " + to_string(_earliestCalendar[curr].getTime()) + ", going through:\n ";
 

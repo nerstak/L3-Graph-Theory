@@ -1,5 +1,6 @@
 #include <iostream>
-#include "rank.h"
+#include "Graph.h"
+#include "logs.h"
 
 using namespace std;
 
@@ -14,11 +15,13 @@ void Graph::findRank() {
 
     int size = _rank.size();
 
-    cout << endl << " ~~Rank Calculation~~" << endl;
+    writeLogFile(_name,"\n\n~~Rank Calculation~~\n");
 
     for (int i = 0; i < size; i++) {
-        cout << endl << " Rank " << i << ":" << endl;
-        cout << "    " << verticesToString(_rank[i]);
+        string display;
+        display =  "\n Rank " + to_string(i) + ":\n";
+        display += "    " + verticesToString(_rank[i]);
+        writeLogFile(_name, display);
     }
 }
 
