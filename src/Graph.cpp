@@ -129,16 +129,16 @@ string Graph::verticesToString(vector<int> states) {
 }
 
 string Graph::computeEarliest() {
-    string outStr= "\n",route ;
+    string outStr, route ;
     int curr;
 
-    for(vector<int> rank: _rank)
+    for(const vector<int> &rank: _rank)
     {
         for(int state:rank)
         {
-            _earliestCalendar[state]= earliestPredecessor(state);
+            _earliestCalendar[state]= minmaxLink(state, EARLIEST);
             outStr+= "\nState: " + to_string(state) + "\n";
-            outStr+= _earliestCalendar[state].toString();
+            outStr+= _earliestCalendar[state].toString(EARLIEST);
         }
     }
 
@@ -147,35 +147,99 @@ string Graph::computeEarliest() {
 
     do{
         route= ">" + to_string(curr) + route;
-        curr= _earliestCalendar[curr].getPrevState();
+        curr= _earliestCalendar[curr].getLinkState();
     } while (curr!=-1);
 
     return outStr + route;
 }
 
-Schedule Graph::earliestPredecessor(int state){
-    int predTime;
-    vector<int> predecessors = getPredecessors(state);
-    Schedule minPredecessor= Schedule(-1,0);
+string Graph::computeLatest() {
+    string outStr;
+    int curr, state;
 
-    if(!predecessors.empty())
+    for (int i = _rank.size() - 1; i >= 0 ; i--) {
+        for (int j = _rank[i].size() - 1 ; j >= 0 ; j--) {
+            state= _rank[i][j];
+
+            _latestCalendar[state]= minmaxLink(state, LATEST);
+            outStr= _latestCalendar[state].toString(LATEST) + outStr;
+            outStr= "\nState: " + to_string(state) + "\n" + outStr;
+        }
+    }
+
+    outStr= "\n" + outStr;
+
+    //TODO check if its normal that latest route is same as earliest route
+    curr=_entryVertices[0];
+    outStr+= "\n\nThe Latest Time route is:\n ";
+
+    do{
+        outStr+= ">" + to_string(curr);
+        curr=_latestCalendar[curr].getLinkState();
+    } while(curr!=-1);
+
+    return outStr;
+}
+
+Schedule Graph::minmaxLink(int state, int timeType){
+    int linkTime, pathWeight, startTime;
+    vector<int> links;
+    Calendar calendarType;
+
+    if( timeType == EARLIEST )
     {
-        for(int pred: predecessors)
-        {
-            predTime= _earliestCalendar[pred].getTime()+ _matrix[pred][state].getWeight();
+        links=getPredecessors(state);
+        calendarType = _earliestCalendar;
+        startTime=0;
+    } else {
+        links=getSuccessors(state);
+        calendarType = _latestCalendar;
+        startTime=_earliestCalendar[_exitVertices[0]].getTime();
+    }
 
-            if(minPredecessor.getPrevState()!=-1)
+    Schedule newLink= Schedule(-1,startTime);
+
+    if(!links.empty())
+    {
+        for(int linkState: links)
+        {
+            if(timeType==EARLIEST)
             {
-                if(predTime < minPredecessor.getTime())
-                {
-                    minPredecessor.setPrev(pred,predTime);
-                }
+                pathWeight= _matrix[linkState][state].getWeight();
             } else {
-                minPredecessor.setPrev(pred,predTime);
+                pathWeight= -_matrix[state][linkState].getWeight();
+            }
+
+            linkTime= calendarType[linkState].getTime() + pathWeight;
+
+            if(newLink.getLinkState()==-1)
+            {
+                //set default value
+                newLink.setLink(linkState, linkTime);
+            } else {
+                //update minimum value
+                if((linkTime* timeType) > (newLink.getTime() * timeType))
+                {
+                    newLink.setLink(linkState, linkTime);
+                }
             }
         }
     }
 
-    return minPredecessor;
+    return newLink;
 }
 
+string Graph::margins() {
+    string outStr="\n";
+    for(const vector<int> &rank: _rank)
+    {
+        for(int state:rank)
+        {
+            outStr+= "\nState: " + to_string(state) + "\n  ";
+            outStr+= "Margin:  " + to_string(_latestCalendar[state].getTime()) +
+                    " - " + to_string(_earliestCalendar[state].getTime()) + " = " +
+                    to_string(_latestCalendar[state].getTime() - _earliestCalendar[state].getTime() );
+        }
+    }
+    return outStr;
+}

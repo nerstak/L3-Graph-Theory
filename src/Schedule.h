@@ -4,25 +4,28 @@
 #include <vector>
 #include <iostream>
 
+#define EARLIEST 1
+#define LATEST -1
+
 using namespace std;
 
 
 class Schedule {
 private:
-    int _prevState;
+    int _linkState;
     int _time;
 
 public:
 
-    Schedule(int prevstate, int time);
+    Schedule(int linkState, int time);
 
     int getTime();
 
-    int getPrevState();
+    int getLinkState();
 
-    string toString();
+    string toString(int timeType);
 
-    void setPrev(int prevState, int time);
+    void setLink(int linkState, int time);
 
 
 };

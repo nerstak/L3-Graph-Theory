@@ -110,9 +110,11 @@ public:
 
     string computeEarliest();
 
-    Schedule earliestPredecessor(int state);
+    string computeLatest();
 
+    Schedule minmaxLink(int state, int timeType);
 
+    string margins();
 
 };
 

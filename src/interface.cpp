@@ -47,6 +47,8 @@ static void processFile() {
 
         //@julien @julien, un gros if( its schedulable) ici stp
         cout << endl << endl << " ~~Earliest Time~~ "  << myGraph.computeEarliest();
+        cout << endl << endl << " ~~Latest Time~~ "  << myGraph.computeLatest();
+        cout << endl << endl << " ~~Margins~~ "  << myGraph.margins();
     }
 
 }
