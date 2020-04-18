@@ -45,10 +45,11 @@ static void processFile() {
     if (!myGraph.getCycle()) {
         myGraph.findRank();
 
-        //@julien @julien, un gros if( its schedulable) ici stp
-        writeLogFile(myFileName,"\n\n ~~Earliest Time~~ " + myGraph.computeEarliest());
-        writeLogFile(myFileName, "\n\n ~~Latest Time~~ " + myGraph.computeLatest());
-        writeLogFile(myFileName,"\n\n ~~Margins~~ " + myGraph.margins());
+        if (schedulable() == true){
+            writeLogFile(myFileName,"\n\n ~~Earliest Time~~ " + myGraph.computeEarliest());
+            writeLogFile(myFileName, "\n\n ~~Latest Time~~ " + myGraph.computeLatest());
+            writeLogFile(myFileName,"\n\n ~~Margins~~ " + myGraph.margins());
+        }
     }
 
 }
