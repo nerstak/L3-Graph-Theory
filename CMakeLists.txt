@@ -13,6 +13,7 @@ set(SRC
         src/rank.cpp
         src/Schedule.cpp
         src/scheduling.cpp
+	src/schedulable.cpp
         )
 
 
