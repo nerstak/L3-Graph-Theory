@@ -68,3 +68,33 @@ static int askNumberFile() {
         cout << "Choice not available";
     }
 }
+
+void displayAdjacencyMatrix() {
+    cout <<"\t ";
+    for (int k = 0; k < _numberVertices; k++){
+            cout << k;
+    }
+    cout <<"\n";
+    for (int i = 0; i < _numberVertices; i++) {
+                  cout << i << " : "<<;
+                  for (int j = 0; j < _numberVertices; j++){
+                        cout << _matrix[i][j].getAdjacency();
+                  }
+                   cout <<"\n"<<;
+    }
+}
+
+void displayWeightMatrix() {
+    cout <<"\t ";
+    for (int k = 0; k < _numberVertices; k++){
+            cout << k;
+    }
+    cout <<"\n";
+    for (int i = 0; i < _numberVertices; i++) {
+                  cout << i << " : "<<;
+                  for (int j = 0; j < _numberVertices; j++){
+                        cout << _matrix[i][j].getWeight();
+                  }
+                   cout <<"\n"<<;
+    }
+}
