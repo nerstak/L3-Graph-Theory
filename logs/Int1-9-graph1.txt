@@ -22,6 +22,40 @@
 2 -> 11 = 2
 9 -> 11 = 9
 
+ ~~Graph Display~~
+Adjacency graph: 
+
+   0 1 2 3 4 5 6 7 8 9 10 11 
+0: 0 0 0 0 1 0 1 1 0 0 1 0 
+1: 0 0 0 0 0 0 0 0 0 1 0 0 
+2: 0 0 0 0 0 0 0 0 0 1 0 1 
+3: 0 0 0 0 0 0 0 0 0 1 0 0 
+4: 0 1 0 0 0 1 0 0 0 0 0 0 
+5: 0 1 0 0 0 0 0 0 1 0 0 0 
+6: 0 0 0 1 0 0 0 0 0 0 0 0 
+7: 0 0 1 0 0 0 0 0 1 0 0 0 
+8: 0 1 0 0 0 0 0 0 0 1 0 0 
+9: 0 0 0 0 0 0 0 0 0 0 0 1 
+10: 0 1 0 1 0 0 0 0 0 0 0 0 
+11: 0 0 0 0 0 0 0 0 0 0 0 0 
+
+
+Value graph: 
+
+   0 1 2 3 4 5 6 7 8 9 10 11 
+0: - - - - 0 - 0 0 - - 0 - 
+1: - - - - - - - - - 1 - - 
+2: - - - - - - - - - 2 - 2 
+3: - - - - - - - - - 3 - - 
+4: - 4 - - - 4 - - - - - - 
+5: - 5 - - - - - - 5 - - - 
+6: - - - 6 - - - - - - - - 
+7: - - 7 - - - - - 7 - - - 
+8: - 8 - - - - - - - 8 - - 
+9: - - - - - - - - - - - 9 
+10: - 10 - 10 - - - - - - - - 
+11: - - - - - - - - - - - - 
+
 ~~ Cycle Detection by removing states ~~
 
 Step 0:
@@ -77,6 +111,14 @@ The graph does not contains a cycle.
     9 
  Rank 6:
     11 
+
+~~~Schedule~~~
+ Checking for single entry: TRUE
+ Checking for single exit: TRUE
+ Checking for Cycle: TRUE
+ Checking for same outgoing weights: TRUE
+ Checking for weight of 0 on entry vertices: TRUE
+     GRAPH IS SCHEDULABLE
 
  ~~Earliest Time~~ 
 State: 0

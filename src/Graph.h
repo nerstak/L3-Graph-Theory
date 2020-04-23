@@ -38,6 +38,9 @@ private:
      */
     void initMatrix();
 
+    /**
+     * Initialises the calendar
+     */
     void initCalendars();
 
     /**
@@ -58,7 +61,11 @@ public:
 
     const bool &getCycle() const;
 
+    const bool &getSchedulable() const;
+
     const vector<vector<int>> &getRank() const;
+
+    const string toString();
 
     /**
      * Get list of predecessors for given state
@@ -139,6 +146,12 @@ public:
      * @return String with info
      */
     string taskDuration(int state);
+
+    bool getVerticeWeight();
+
+    bool getWeightEntryVertex();
+
+    string schedulable();
 };
 
 

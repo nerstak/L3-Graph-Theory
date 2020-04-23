@@ -45,7 +45,6 @@ string Graph::computeLatest() {
     outStr = "\n" + outStr;
 
 
-    //TODO check if its normal that latest route is same as earliest route
     //The route taken for this earliest duration is seen by going through the calendar from the single entrance vertice
     //The total duration is the same and the latest time route (critical path) is displayed to check its the same
     curr = _entryVertices[0];

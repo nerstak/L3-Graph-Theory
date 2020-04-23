@@ -40,12 +40,15 @@ static void processFile() {
     myFileName = "Int1-9-graph" + to_string(askNumberFile()) + ".txt";
     Graph myGraph = Graph("graphs/", myFileName);
 
+    writeLogFile(myFileName,"\n ~~Graph Display~~\n" + myGraph.toString());
+
     myGraph.checkLoop();
 
     if (!myGraph.getCycle()) {
         myGraph.findRank();
 
-        if (schedulable() == true){
+        writeLogFile(myFileName, "\n\n~~~Schedule~~~\n" + myGraph.schedulable());
+        if (myGraph.getSchedulable()){
             writeLogFile(myFileName,"\n\n ~~Earliest Time~~ " + myGraph.computeEarliest());
             writeLogFile(myFileName, "\n\n ~~Latest Time~~ " + myGraph.computeLatest());
             writeLogFile(myFileName,"\n\n ~~Margins~~ " + myGraph.margins());
@@ -66,35 +69,5 @@ static int askNumberFile() {
         if (choice >= 0 && choice <= 13)
             return choice;
         cout << "Choice not available";
-    }
-}
-
-void displayAdjacencyMatrix() {
-    cout <<"\t ";
-    for (int k = 0; k < _numberVertices; k++){
-            cout << k;
-    }
-    cout <<"\n";
-    for (int i = 0; i < _numberVertices; i++) {
-                  cout << i << " : "<<;
-                  for (int j = 0; j < _numberVertices; j++){
-                        cout << _matrix[i][j].getAdjacency();
-                  }
-                   cout <<"\n"<<;
-    }
-}
-
-void displayWeightMatrix() {
-    cout <<"\t ";
-    for (int k = 0; k < _numberVertices; k++){
-            cout << k;
-    }
-    cout <<"\n";
-    for (int i = 0; i < _numberVertices; i++) {
-                  cout << i << " : "<<;
-                  for (int j = 0; j < _numberVertices; j++){
-                        cout << _matrix[i][j].getWeight();
-                  }
-                   cout <<"\n"<<;
     }
 }
