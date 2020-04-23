@@ -1,8 +1,8 @@
-#ifndef GRAPH_THEORY_INTERFACE_H
-#define GRAPH_THEORY_INTERFACE_H
+#ifndef GRAPH_THEORY_INT1_9_INTERFACE_H
+#define GRAPH_THEORY_INT1_9_INTERFACE_H
 
-#include "Graph.h"
-#include "logs.h"
+#include "Int1-9_Graph.h"
+#include "Int1-9_logs.h"
 
 /**
  * Function handling menu
@@ -33,4 +33,4 @@ static int askNumberFile();
 
 static string addSpace(int i);
 
-#endif //GRAPH_THEORY_INTERFACE_H
+#endif //GRAPH_THEORY_INT1_9_INTERFACE_H

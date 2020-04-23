@@ -1,8 +1,8 @@
 #include <fstream>
 #include <algorithm>
 #include <iostream>
-#include "readGraphFile.h"
-#include "Graph.h"
+#include "Int1-9_readGraphFile.h"
+#include "Int1-9_Graph.h"
 
 
 using namespace std;
@@ -15,9 +15,6 @@ Graph::Graph(const string &path, const string &nameFile) {
         _name = nameFile;
         readGraphFromFile(inputStream);
 
-        // TODO: Perform tests
-
-
         findEntryAndEnding();
 
         inputStream.close();
@@ -25,7 +22,7 @@ Graph::Graph(const string &path, const string &nameFile) {
 }
 
 bool Graph::readGraphFromFile(ifstream &stream) {
-    string line;;
+    string line;
 
     _numberVertices = readUniqueNumber(stream);
     _numberEdges = readUniqueNumber(stream);

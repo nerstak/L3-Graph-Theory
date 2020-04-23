@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "Int1-9_Graph.h"
 
 string Graph::computeEarliest() {
     string outStr, route;
@@ -30,7 +30,7 @@ string Graph::computeEarliest() {
 
 string Graph::computeLatest() {
     string outStr;
-    int curr, state;
+    int curr;
 
     //We calculate this in order from highest rank to lowest, (but still display it from lowest to highest(?))
     for (auto rank = _rank.rbegin(); rank < _rank.rend(); ++rank) {

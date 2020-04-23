@@ -1,4 +1,4 @@
-#include "MatrixValue.h"
+#include "Int1-9_MatrixValue.h"
 
 MatrixValue::MatrixValue(bool adjacency, int weight) {
     if(adjacency != 0 && adjacency != 1 && adjacency != -1) {
@@ -29,7 +29,7 @@ void MatrixValue::setWeight(int weight) {
 
 void MatrixValue::setAdjacency(bool adjacency) {
     _adjacency = adjacency;
-    if(_adjacency == false) {
+    if(!_adjacency) {
         _weight = 0;
     }
 }

@@ -1,4 +1,4 @@
-#include "Schedule.h"
+#include "Int1-9_Schedule.h"
 
 Schedule::Schedule(int linkState, int time) {
     _linkState = linkState;

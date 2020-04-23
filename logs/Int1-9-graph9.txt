@@ -1,0 +1,257 @@
+* Reading graph from file Int1-9-graph9.txt
+10 vertices
+18 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 2 = 2
+1 -> 4 = 2
+1 -> 5 = 2
+2 -> 3 = 3
+2 -> 4 = 3
+2 -> 8 = 3
+3 -> 7 = 5
+3 -> 9 = 5
+4 -> 5 = 6
+4 -> 6 = 6
+4 -> 8 = 6
+5 -> 6 = 2
+5 -> 7 = 2
+6 -> 9 = 1
+7 -> 8 = 6
+8 -> 9 = 1
+
+ ~~Graph Display~~
+Adjacency matrix: 
+
+    0  1  2  3  4  5  6  7  8  9  
+0 : 0  1  1  0  0  0  0  0  0  0  
+1 : 0  0  1  0  1  1  0  0  0  0  
+2 : 0  0  0  1  1  0  0  0  1  0  
+3 : 0  0  0  0  0  0  0  1  0  1  
+4 : 0  0  0  0  0  1  1  0  1  0  
+5 : 0  0  0  0  0  0  1  1  0  0  
+6 : 0  0  0  0  0  0  0  0  0  1  
+7 : 0  0  0  0  0  0  0  0  1  0  
+8 : 0  0  0  0  0  0  0  0  0  1  
+9 : 0  0  0  0  0  0  0  0  0  0  
+
+
+Value matrix: 
+
+    0  1  2  3  4  5  6  7  8  9  
+0 : -  0  0  -  -  -  -  -  -  -  
+1 : -  -  2  -  2  2  -  -  -  -  
+2 : -  -  -  3  3  -  -  -  3  -  
+3 : -  -  -  -  -  -  -  5  -  5  
+4 : -  -  -  -  -  6  6  -  6  -  
+5 : -  -  -  -  -  -  2  2  -  -  
+6 : -  -  -  -  -  -  -  -  -  1  
+7 : -  -  -  -  -  -  -  -  6  -  
+8 : -  -  -  -  -  -  -  -  -  1  
+9 : -  -  -  -  -  -  -  -  -  -  
+
+~~ Cycle Detection by removing states ~~
+
+Step 0:
+  Elimination of entry points: 0 
+  Remaining Vertices: 1 2 3 4 5 6 7 8 9 
+  New entry points: 1 
+
+Step 1:
+  Elimination of entry points: 1 
+  Remaining Vertices: 2 3 4 5 6 7 8 9 
+  New entry points: 2 
+
+Step 2:
+  Elimination of entry points: 2 
+  Remaining Vertices: 3 4 5 6 7 8 9 
+  New entry points: 3 4 
+
+Step 3:
+  Elimination of entry points: 3 4 
+  Remaining Vertices: 5 6 7 8 9 
+  New entry points: 5 
+
+Step 4:
+  Elimination of entry points: 5 
+  Remaining Vertices: 6 7 8 9 
+  New entry points: 6 7 
+
+Step 5:
+  Elimination of entry points: 6 7 
+  Remaining Vertices: 8 9 
+  New entry points: 8 
+
+Step 6:
+  Elimination of entry points: 8 
+  Remaining Vertices: 9 
+  New entry points: 9 
+
+Step 7:
+  Elimination of entry points: 9 
+  Remaining Vertices: None
+  New entry points: None
+
+The graph does not contains a cycle.
+
+~~Rank Calculation~~
+
+ Rank 0:
+    0 
+ Rank 1:
+    1 
+ Rank 2:
+    2 
+ Rank 3:
+    3 4 
+ Rank 4:
+    5 
+ Rank 5:
+    6 7 
+ Rank 6:
+    8 
+ Rank 7:
+    9 
+
+~~~Schedule~~~
+ Checking for single entry: TRUE
+ Checking for single exit: TRUE
+ Checking for lack of Cycle: TRUE
+ Checking for same outgoing weights: TRUE
+ Checking for negative weights: TRUE
+ Checking for weight of 0 on entry vertices: TRUE
+     GRAPH IS SCHEDULABLE
+
+ ~~Earliest Time~~ 
+State: 0
+   Time: 0
+   Predecessor: None
+   Task duration: 0
+
+State: 1
+   Time: 0
+   Predecessor: 0
+   Task duration: 2
+
+State: 2
+   Time: 2
+   Predecessor: 1
+   Task duration: 3
+
+State: 3
+   Time: 5
+   Predecessor: 2
+   Task duration: 5
+
+State: 4
+   Time: 5
+   Predecessor: 2
+   Task duration: 6
+
+State: 5
+   Time: 11
+   Predecessor: 4
+   Task duration: 2
+
+State: 6
+   Time: 13
+   Predecessor: 5
+   Task duration: 1
+
+State: 7
+   Time: 13
+   Predecessor: 5
+   Task duration: 6
+
+State: 8
+   Time: 19
+   Predecessor: 7
+   Task duration: 1
+
+State: 9
+   Time: 20
+   Predecessor: 8
+   Task duration: -
+
+
+Earliest Duration is 20, going through:
+ >0>1>2>4>5>7>8>9
+
+ ~~Latest Time~~ 
+
+State: 0
+   Time: 0
+   Successor: 1
+   Task duration: 0
+
+State: 1
+   Time: 0
+   Successor: 2
+   Task duration: 2
+
+State: 2
+   Time: 2
+   Successor: 4
+   Task duration: 3
+
+State: 3
+   Time: 8
+   Successor: 7
+   Task duration: 5
+
+State: 4
+   Time: 5
+   Successor: 5
+   Task duration: 6
+
+State: 5
+   Time: 11
+   Successor: 7
+   Task duration: 2
+
+State: 6
+   Time: 19
+   Successor: 9
+   Task duration: 1
+
+State: 7
+   Time: 13
+   Successor: 8
+   Task duration: 6
+
+State: 8
+   Time: 19
+   Successor: 9
+   Task duration: 1
+
+State: 9
+   Time: 20
+   Successor: None
+   Task duration: -
+
+
+The Latest Time route is:
+ >0>1>2>4>5>7>8>9
+
+ ~~Margins~~ 
+
+State: 0
+  Margin:  0 - 0 = 0
+State: 1
+  Margin:  0 - 0 = 0
+State: 2
+  Margin:  2 - 2 = 0
+State: 3
+  Margin:  8 - 5 = 3
+State: 4
+  Margin:  5 - 5 = 0
+State: 5
+  Margin:  11 - 11 = 0
+State: 6
+  Margin:  19 - 13 = 6
+State: 7
+  Margin:  13 - 13 = 0
+State: 8
+  Margin:  19 - 19 = 0
+State: 9
+  Margin:  20 - 20 = 0

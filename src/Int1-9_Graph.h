@@ -1,10 +1,10 @@
-#ifndef GRAPH_THEORY_GRAPH_H
-#define GRAPH_THEORY_GRAPH_H
+#ifndef GRAPH_THEORY_INT1_9_GRAPH_H
+#define GRAPH_THEORY_INT1_9_GRAPH_H
 
 #include <string>
 #include <vector>
-#include "MatrixValue.h"
-#include "Schedule.h"
+#include "Int1-9_MatrixValue.h"
+#include "Int1-9_Schedule.h"
 
 using namespace std;
 
@@ -65,7 +65,7 @@ public:
 
     const vector<vector<int>> &getRank() const;
 
-    const string toString();
+    std::string toString();
 
     /**
      * Get list of predecessors for given state
@@ -89,7 +89,7 @@ public:
     string verticesToString(vector<int> states);
 
     /**
-     * Runs loop detection and changes the cycle value of graph
+     * Runs loop detection and chastatic nges the cycle value of graph
      */
     void checkLoop();
 
@@ -151,8 +151,14 @@ public:
 
     bool getWeightEntryVertex();
 
+    /**
+     * Verify if a graph is schedulable (with outputs)
+     * @return Boolean
+     */
     string schedulable();
+
+    bool verifyNegativeWeights();
 };
 
 
-#endif //GRAPH_THEORY_GRAPH_H
+#endif //GRAPH_THEORY_INT1_9_GRAPH_H

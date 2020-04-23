@@ -1,8 +1,8 @@
-#ifndef GRAPH_THEORY_READGRAPHFILE_H
-#define GRAPH_THEORY_READGRAPHFILE_H
+#ifndef GRAPH_THEORY_INT1_9_READGRAPHFILE_H
+#define GRAPH_THEORY_INT1_9_READGRAPHFILE_H
 
-#include "Graph.h"
-#include "logs.h"
+#include "Int1-9_Graph.h"
+#include "Int1-9_logs.h"
 
 /**
  * Read an unique number on a line
@@ -54,4 +54,4 @@ static bool isInVector(vector<int> &l, int elt);
  */
 static void displayNumbers(const string &nameFile, int nbVertices, int nbEdges);
 
-#endif //GRAPH_THEORY_READGRAPHFILE_H
+#endif //GRAPH_THEORY_INT1_9_READGRAPHFILE_H

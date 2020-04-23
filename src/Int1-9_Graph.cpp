@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "Int1-9_Graph.h"
 #include <algorithm>
 
 const vector<int> &Graph::getEntryVertices() const {

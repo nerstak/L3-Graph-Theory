@@ -1,11 +1,11 @@
-#ifndef GRAPH_THEORY_SCHEDULE_H
-#define GRAPH_THEORY_SCHEDULE_H
+#ifndef GRAPH_THEORY_INT1_9_SCHEDULE_H
+#define GRAPH_THEORY_INT1_9_SCHEDULE_H
 
 #include <vector>
 #include <iostream>
 
 #define EARLIEST 1
-#define LATEST -1
+#define LATEST (-1)
 
 using namespace std;
 
@@ -37,4 +37,4 @@ public:
 typedef vector<Schedule> Calendar;
 
 
-#endif //GRAPH_THEORY_SCHEDULE_H
+#endif //GRAPH_THEORY_INT1_9_SCHEDULE_H
