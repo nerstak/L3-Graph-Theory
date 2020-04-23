@@ -46,13 +46,13 @@ static void processFile() {
 
     if (!myGraph.getCycle()) {
         myGraph.findRank();
+    }
 
-        writeLogFile(myFileName, "\n\n~~~Schedule~~~\n" + myGraph.schedulable());
-        if (myGraph.getSchedulable()){
-            writeLogFile(myFileName,"\n\n ~~Earliest Time~~ " + myGraph.computeEarliest());
-            writeLogFile(myFileName, "\n\n ~~Latest Time~~ " + myGraph.computeLatest());
-            writeLogFile(myFileName,"\n\n ~~Margins~~ " + myGraph.margins());
-        }
+    writeLogFile(myFileName, "\n\n~~~Schedule~~~\n" + myGraph.schedulable());
+    if (myGraph.getSchedulable()){
+        writeLogFile(myFileName,"\n\n ~~Earliest Time~~ " + myGraph.computeEarliest());
+        writeLogFile(myFileName, "\n\n ~~Latest Time~~ " + myGraph.computeLatest());
+        writeLogFile(myFileName,"\n\n ~~Margins~~ " + myGraph.margins());
     }
 
 }
@@ -70,4 +70,44 @@ static int askNumberFile() {
             return choice;
         cout << "Choice not available";
     }
+}
+
+const string Graph::toString() {
+    string adjacency= "    ", value="    ";
+    bool edgeExists;
+    int weight;
+
+    for (int i = 0; i < _numberVertices; i++){
+        adjacency += to_string(i) + " " + addSpace(i);
+        value += to_string(i) +  " " + addSpace(i);
+    }
+    value += "\n";
+    adjacency +="\n";
+    for (int i = 0; i < _numberVertices; i++) {
+        value += to_string(i) +  addSpace(i) + ": ";
+        adjacency += to_string(i) +  addSpace(i) + ": ";
+        for (int j = 0; j < _numberVertices; j++){
+            edgeExists=_matrix[i][j].getAdjacency();
+
+            if(edgeExists)
+            {
+                adjacency+= "1  ";
+                weight=_matrix[i][j].getWeight();
+                value += to_string(weight) + " " + addSpace(weight);
+            }
+            else {
+                adjacency+= "0  ";
+                value += "-  ";
+            }
+        }
+        adjacency+= "\n";
+        value += "\n";
+    }
+
+    return "Adjacency graph: \n\n"+ adjacency + "\n\nValue graph: \n\n"+ value;
+}
+
+static string addSpace(int i)
+{
+    if(i<10) { return " ";} else { return "";}
 }

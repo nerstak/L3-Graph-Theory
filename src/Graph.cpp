@@ -46,30 +46,6 @@ void Graph::initCalendars() {
 
 Graph::~Graph() = default;
 
-const string Graph::toString() {
-    string adjacency= "   ", value="   ";
-    bool edgeExists;
-
-    for (int i = 0; i < _numberVertices; i++){
-        adjacency += to_string(i) + " ";
-        value += to_string(i) + " ";
-    }
-    value += "\n";
-    adjacency +="\n";
-    for (int i = 0; i < _numberVertices; i++) {
-        value += to_string(i) + ": ";
-        adjacency += to_string(i) + ": ";
-        for (int j = 0; j < _numberVertices; j++){
-            edgeExists=_matrix[i][j].getAdjacency();
-            adjacency+= edgeExists ? "1 " : "0 ";
-            value += edgeExists ? (to_string(_matrix[i][j].getWeight())+" ") : "- ";
-        }
-        adjacency+= "\n";
-        value += "\n";
-    }
-
-    return "Adjacency graph: \n\n"+ adjacency + "\n\nValue graph: \n\n"+ value;
-}
 
 void Graph::findEntryAndEnding() {
     _entryVertices.clear();

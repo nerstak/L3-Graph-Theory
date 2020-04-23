@@ -31,4 +31,6 @@ static void separation();
  */
 static int askNumberFile();
 
+static string addSpace(int i);
+
 #endif //GRAPH_THEORY_INTERFACE_H

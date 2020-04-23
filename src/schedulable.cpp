@@ -44,7 +44,7 @@ string Graph::schedulable() {
     if (_entryVertices.size() == 1) {
         status += "TRUE\n Checking for single exit: ";
         if (_exitVertices.size() == 1) {
-            status += "TRUE\n Checking for Cycle: ";
+            status += "TRUE\n Checking for lack of Cycle: ";
             if (!getCycle()) {
                 status += "TRUE\n Checking for same outgoing weights: ";
                 if (getVerticeWeight()) {
@@ -59,7 +59,7 @@ string Graph::schedulable() {
     }
 
     if(!_schedulable){
-        status += "TRUE\n     GRAPH IS NOT SCHEDULABLE";
+        status += "FALSE\n     GRAPH IS NOT SCHEDULABLE";
     }
 
     return status;
