@@ -1,4 +1,4 @@
-* Reading graph from file Int1-9-graph12.txt
+* Reading graph from file 12
 12 vertices
 16 edges
 0 -> 4 = 0
@@ -40,7 +40,7 @@ Value matrix:
 
     0  1  2  3  4  5  6  7  8  9  10 11 
 0 : -  -  -  -  0  -  0  0  -  -  -  -  
-1 : -  -  -  -  -  -  -  -  -  -1  -  -  
+1 : -  -  -  -  -  -  -  -  -  -1 -  -  
 2 : -  -  -  -  -  -  -  -  -  -  -  2  
 3 : -  -  -  -  -  -  -  -  -  3  -  -  
 4 : -  5  -  -  -  4  -  -  -  -  -  -  

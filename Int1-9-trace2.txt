@@ -1,4 +1,4 @@
-* Reading graph from file Int1-9-graph2.txt
+* Reading graph from file 2
 14 vertices
 23 edges
 0 -> 1 = 0

@@ -77,6 +77,7 @@ string Graph::toString() {
     bool edgeExists;
     int weight;
 
+    // Top row
     for (int i = 0; i < _numberVertices; i++){
         adjacency += to_string(i) + " " + addSpace(i);
         value += to_string(i) +  " " + addSpace(i);
@@ -84,8 +85,11 @@ string Graph::toString() {
     value += "\n";
     adjacency +="\n";
     for (int i = 0; i < _numberVertices; i++) {
+        // Left collumn
         value += to_string(i) +  addSpace(i) + ": ";
         adjacency += to_string(i) +  addSpace(i) + ": ";
+
+        //Actual values for both tables
         for (int j = 0; j < _numberVertices; j++){
             edgeExists=_matrix[i][j].getAdjacency();
 
@@ -109,5 +113,5 @@ string Graph::toString() {
 
 static string addSpace(int i)
 {
-    if(i<10) { return " ";} else { return "";}
+    if(i<10 && i>-1) { return " ";} else { return "";}
 }

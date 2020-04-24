@@ -1,4 +1,4 @@
-* Reading graph from file Int1-9-graph0.txt
+* Reading graph from file 0
 4 vertices
 5 edges
 3 -> 1 = 25
@@ -22,7 +22,7 @@ Value matrix:
     0  1  2  3  
 0 : -  0  -  -  
 1 : 12 -  -  -  
-2 : -5  7  -  -  
+2 : -5 7  -  -  
 3 : -  25 -  -  
 
 ~~ Cycle Detection by removing states ~~

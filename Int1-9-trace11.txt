@@ -1,4 +1,4 @@
-* Reading graph from file Int1-9-graph11.txt
+* Reading graph from file 11
 11 vertices
 13 edges
 1 -> 9 = 1

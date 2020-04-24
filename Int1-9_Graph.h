@@ -65,6 +65,10 @@ public:
 
     const vector<vector<int>> &getRank() const;
 
+    /**
+     * Generates the display for the adjacency and value matrices
+     * @return string to display
+     */
     std::string toString();
 
     /**
@@ -147,8 +151,16 @@ public:
      */
     string taskDuration(int state);
 
+    /**
+     * Checks that all outgoing edges are the same for all vertices
+     * @return true if they are
+     */
     bool getVerticeWeight();
 
+    /**
+     * Checks that the entry has only outgoing edges of weight 0
+     * @return true if it does
+     */
     bool getWeightEntryVertex();
 
     /**
@@ -157,6 +169,10 @@ public:
      */
     string schedulable();
 
+    /**
+     * Checks there are no negative weights
+     * @return true if there aren't
+     */
     bool verifyNegativeWeights();
 };
 
