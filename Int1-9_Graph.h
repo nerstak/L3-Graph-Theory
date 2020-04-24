@@ -49,7 +49,7 @@ private:
     void findEntryAndEnding();
 
 public:
-    explicit Graph(const string &path, const string &nameFile);
+    explicit Graph(const string &nameFile);
 
     ~Graph();
 

@@ -7,8 +7,8 @@
 
 using namespace std;
 
-Graph::Graph(const string &path, const string &nameFile) {
-    ifstream inputStream(path + nameFile);
+Graph::Graph(const string &nameFile) {
+    ifstream inputStream("Int1-9-graph" + nameFile + ".txt");
 
     if(inputStream) {
         createLogFile(nameFile);

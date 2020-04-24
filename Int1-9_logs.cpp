@@ -5,7 +5,7 @@
 using namespace std;
 
 void createLogFile(const string& nameFile) {
-    ofstream myFile("logs/" + nameFile, ios::trunc);
+    ofstream myFile("Int1-9-trace" + nameFile + ".txt", ios::trunc);
     if(myFile.is_open()) {
         myFile.close();
     }
@@ -16,7 +16,7 @@ void writeLogFile(const string& nameFile, const string &value) {
     cout << value;
 
     // Write on log
-    ofstream myFile("logs/" + nameFile, ios::app);
+    ofstream myFile("Int1-9-trace" + nameFile + ".txt", ios::app);
     if(myFile.is_open()) {
         myFile << value;
     }

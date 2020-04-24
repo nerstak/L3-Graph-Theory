@@ -37,8 +37,8 @@ static int interaction() {
 static void processFile() {
     separation();
     string myFileName;
-    myFileName = "Int1-9-graph" + to_string(askNumberFile()) + ".txt";
-    Graph myGraph = Graph("graphs/", myFileName);
+    myFileName = to_string(askNumberFile());
+    Graph myGraph = Graph(myFileName);
 
     writeLogFile(myFileName,"\n ~~Graph Display~~\n" + myGraph.toString());
 
