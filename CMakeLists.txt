@@ -3,28 +3,28 @@ project(Graph_Theory) # Project name
 
 # List of cpp files
 set(SRC
-		Int1-9_main.cpp
-		Int1-9_Graph.cpp
-		Int1-9_MatrixValue.cpp
-		Int1-9_readGraphFile.cpp
-		Int1-9_interface.cpp
-		Int1-9_logs.cpp
-		Int1-9_loop.cpp
-		Int1-9_rank.cpp
-		Int1-9_Schedule.cpp
-		Int1-9_scheduling.cpp
-		Int1-9_schedulable.cpp
+		main.cpp
+		src/Graph.cpp
+		src/MatrixValue.cpp
+		src/readGraphFile.cpp
+		src/interface.cpp
+		src/logs.cpp
+		src/loop.cpp
+		src/rank.cpp
+		src/Schedule.cpp
+		src/scheduling.cpp
+		src/schedulable.cpp
         )
 
 
 # List of h files
 set(HDR
-		Int1-9_Graph.h
-		Int1-9_MatrixValue.h
-		Int1-9_readGraphFile.h
-		Int1-9_interface.h
-		Int1-9_logs.h
-		Int1-9_Schedule.h
+		src/Graph.h
+		src/MatrixValue.h
+		src/readGraphFile.h
+		src/interface.h
+		src/logs.h
+		src/Schedule.h
         )
 
 set(CMAKE_CXX_STANDARD 17) # Version of C++

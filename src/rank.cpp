@@ -1,5 +1,5 @@
-#include "Int1-9_Graph.h"
-#include "Int1-9_logs.h"
+#include "Graph.h"
+#include "logs.h"
 
 using namespace std;
 

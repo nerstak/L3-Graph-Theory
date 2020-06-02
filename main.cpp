@@ -1,4 +1,4 @@
-#include "Int1-9_interface.h"
+#include "src/interface.h"
 
 int main() {
     menu();

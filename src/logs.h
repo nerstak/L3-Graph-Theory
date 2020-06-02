@@ -1,5 +1,5 @@
-#ifndef GRAPH_THEORY_INT1_9_LOGS_H
-#define GRAPH_THEORY_INT1_9_LOGS_H
+#ifndef GRAPH_THEORY_LOGS_H
+#define GRAPH_THEORY_LOGS_H
 
 #include <string>
 
@@ -16,4 +16,4 @@ void createLogFile(const std::string& nameFile);
  */
 void writeLogFile(const std::string& nameFile, const std::string &value);
 
-#endif //GRAPH_THEORY_INT1_9_LOGS_H
+#endif //GRAPH_THEORY_LOGS_H

@@ -1,4 +1,4 @@
-#include "Int1-9_MatrixValue.h"
+#include "MatrixValue.h"
 
 MatrixValue::MatrixValue(bool adjacency, int weight) {
     if(adjacency != 0 && adjacency != 1 && adjacency != -1) {

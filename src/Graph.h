@@ -1,10 +1,10 @@
-#ifndef GRAPH_THEORY_INT1_9_GRAPH_H
-#define GRAPH_THEORY_INT1_9_GRAPH_H
+#ifndef GRAPH_THEORY_GRAPH_H
+#define GRAPH_THEORY_GRAPH_H
 
 #include <string>
 #include <vector>
-#include "Int1-9_MatrixValue.h"
-#include "Int1-9_Schedule.h"
+#include "MatrixValue.h"
+#include "Schedule.h"
 
 using namespace std;
 
@@ -177,4 +177,4 @@ public:
 };
 
 
-#endif //GRAPH_THEORY_INT1_9_GRAPH_H
+#endif //GRAPH_THEORY_GRAPH_H

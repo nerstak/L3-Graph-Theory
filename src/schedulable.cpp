@@ -1,4 +1,4 @@
-#include "Int1-9_Graph.h"
+#include "Graph.h"
 
 bool Graph::getVerticeWeight() {
     bool schedulableWeight = true;

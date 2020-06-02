@@ -1,14 +1,14 @@
 #include <fstream>
 #include <algorithm>
 #include <iostream>
-#include "Int1-9_readGraphFile.h"
-#include "Int1-9_Graph.h"
+#include "readGraphFile.h"
+#include "Graph.h"
 
 
 using namespace std;
 
 Graph::Graph(const string &nameFile) {
-    ifstream inputStream("Int1-9-graph" + nameFile + ".txt");
+    ifstream inputStream("graphs/" + nameFile + ".txt");
 
     if(inputStream) {
         createLogFile(nameFile);

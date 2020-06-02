@@ -1,5 +1,5 @@
-#ifndef GRAPH_THEORY_INT1_9_SCHEDULE_H
-#define GRAPH_THEORY_INT1_9_SCHEDULE_H
+#ifndef GRAPH_THEORY_SCHEDULE_H
+#define GRAPH_THEORY_SCHEDULE_H
 
 #include <vector>
 #include <iostream>
@@ -37,4 +37,4 @@ public:
 typedef vector<Schedule> Calendar;
 
 
-#endif //GRAPH_THEORY_INT1_9_SCHEDULE_H
+#endif //GRAPH_THEORY_SCHEDULE_H

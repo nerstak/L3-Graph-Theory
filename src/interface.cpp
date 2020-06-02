@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Int1-9_interface.h"
+#include "interface.h"
 
 using namespace std;
 
@@ -38,7 +38,7 @@ static void processFile() {
     separation();
     string myFileName;
     myFileName = to_string(askNumberFile());
-    Graph myGraph = Graph(myFileName);
+    Graph myGraph = Graph("graph" + myFileName);
 
     writeLogFile(myFileName,"\n ~~Graph Display~~\n" + myGraph.toString());
 
